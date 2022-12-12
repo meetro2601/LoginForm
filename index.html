@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal CSS</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .modalcontainer {
+        background-color: cornflowerblue;
+        width: 100vw;
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+      }
+      .loginmodal {
+        background-color: cornsilk;
+        width: 25vw;
+        height: 80%;
+        margin: auto;
+        position: relative;
+        top: 25px;
+        overflow: hidden;
+      }
+      .btns {
+        text-align: center;
+        margin: 20px;
+        padding: 2.5vw 0;
+      }
+      .registerBtn,.loginBtn {
+        background-color: transparent;
+        border: 2px solid rgb(238, 224, 224);
+        padding: 5px 20px;
+        border-radius: 25px;
+        margin: 5px 0;
+        font-size: 15px;
+        cursor: pointer;
+      }
+      .BtnActive {
+        background-image: linear-gradient(45deg, red, blue);
+        color: honeydew;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        background-color: transparent;
+        margin: 10px auto;
+        padding: 10px;
+        border: none;
+        border-bottom: 2px solid darkgray;
+      }
+      #registerform,
+      #loginform {
+        position: absolute;
+        margin: 15px 20px;
+        top: 25%;
+        bottom: 0%;
+        left: 110%;
+        right: -110%;
+        border: 2px solid rgb(212, 184, 184);
+        padding: 15px;
+        text-align: center;
+      }
+      #loginform {
+        left: -110%;
+        right: 110%;
+        transition: 1s;
+      }
+      .active {
+        left: 0% !important;
+        right: 0% !important;
+      }
+      .checkbox {
+        margin: 20px auto;
+        color: gray;
+      }
+      .submitBtn {
+        position: absolute;
+        width: 100%;
+        top: 85%;
+        left: 0%;
+        margin: auto;
+        text-align: center;
+      }
+      .submitBtn button {
+        background-color: rgb(54, 54, 236);
+        padding: 5px 10px;
+        border: 2px solid honeydew;
+        color: white;
+        font-size: 16px;
+        border-radius: 5px;
+        width: auto;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      #registerform {
+        transition: 1s;
+      }
+      @media (min-width: 768px) and (max-width: 992px) {
+        .loginmodal {
+          width: 30vw;
+        }
+      }
+      @media (min-width: 640px) and (max-width: 768px) {
+        .loginmodal {
+          width: 35vw;
+        }
+      }
+      @media (min-width: 520px) and (max-width: 640px) {
+        .loginmodal {
+          width: 45vw;
+        }
+      }
+      @media (min-width: 400px) and (max-width: 520px) {
+        .loginmodal {
+          width: 60vw;
+        }
+      }
+      @media (max-width: 400px) {
+        .loginmodal {
+          width: 75vw;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="modalcontainer">
+      <div class="loginmodal">
+        <div class="btns">
+          <button class="loginBtn BtnActive">Login</button>
+          <button class="registerBtn">Register</button>
+        </div>
+        <div class="active" id="loginform">
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Username"
+          />
+          <input
+            type="text"
+            name="password"
+            id="password"
+            placeholder="Password"
+          />
+          <br />
+          <div class="checkbox">
+            <input type="checkbox" name="me" id="remember" />
+            <label for="remember">Remember Me</label>
+          </div>
+          <div class="submitBtn">
+            <button type="submit">Sign-In</button>
+          </div>
+        </div>
+
+        <div id="registerform">
+          <input
+            type="text"
+            name="username"
+            id="name"
+            placeholder="Your Name"
+          />
+          <input type="email" name="email" id="email" placeholder="Email Id" />
+          <input
+            type="password"
+            name="password"
+            id="_password"
+            placeholder="Password"
+          />
+          <br />
+          <div class="checkbox">
+            <input type="checkbox" name="me" id="remember" />
+            <label for="remember">I Agree</label>
+          </div>
+          <div class="submitBtn">
+            <button type="submit">Sign-Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let loginBtn = document.querySelector(".loginBtn");
+    let registerBtn = document.querySelector(".registerBtn");
+    let loginform = document.querySelector("#loginform");
+    let registerform = document.querySelector("#registerform");
+
+    function login() {
+      loginBtn.classList.add("BtnActive");
+      loginform.classList.add("active");
+      registerBtn.classList.remove("BtnActive");
+      registerform.classList.remove("active");
+    }
+    loginBtn.addEventListener("click", login);
+
+    function register() {
+      registerBtn.classList.add("BtnActive");
+      registerform.classList.add("active");
+      loginBtn.classList.remove("BtnActive");
+      loginform.classList.remove("active");
+    }
+    registerBtn.addEventListener("click", register);
+  </script>
+</html>
